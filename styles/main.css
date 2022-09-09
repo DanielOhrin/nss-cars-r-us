@@ -1,0 +1,51 @@
+
+html {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+#options {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    max-width: 50%;
+}
+
+#paints, #interior, #wheels, #technology {
+    display: flex;
+    flex-flow: row wrap;
+    width: 35%;
+    flex: 0 1 auto;
+    border: 2px dotted aquamarine;
+    padding: 0px 0px 10px 10px;
+    border-radius: 1rem;
+    margin-bottom: 2rem;
+    background-color: lightyellow;
+    overflow: auto;
+}
+
+h2 {
+    width: 100%;
+}
+
+#order-btn {
+    color: white;
+    background-color: darkcyan;
+    padding: 8px 4px;
+}
+
+#order-btn:hover {
+    opacity: 60%;
+    cursor: pointer;
+}
+
+#orders {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: flex-start;
+}
+
+#orders > p {
+    font-size: 1.1rem;
+    border: 2px dotted darkcyan;
+    padding: 10px;
+    min-width: 55%;
+}

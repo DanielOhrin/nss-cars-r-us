@@ -4,6 +4,7 @@ import { Paints } from "./Paints.js"
 import { Interiors } from "./Interiors.js"
 import { Orders } from "./Orders.js"
 import { addCustomOrder } from "./database.js"
+import { Models } from "./Models.js"
 export const refreshHTML = () => {
     const mainContainer = document.querySelector(`#container`)
     
@@ -23,6 +24,8 @@ export const refreshHTML = () => {
             ${Technologies()}
         </section>
     </div>
+    ${ Models() }
+    <hr style="opacity: 0%;">
     <button id="order-btn">Place Car Order</button>
     <hr style="opacity: 0%;">
     <section id="orders">

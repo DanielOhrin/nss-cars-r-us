@@ -1,5 +1,6 @@
-import { getOrders, getInterior, getPaint, getTechnology, getWheels } from "./database.js"
+import { getOrders, getInterior, getPaint, getTechnology, getWheels, Multiply, getModels } from "./database.js"
 
+const models = getModels()
 
 export const Orders = () => {
     const orders = getOrders()
@@ -20,9 +21,11 @@ export const Orders = () => {
         matchingPaint = paints.find(paint => paint.id === order.paintId)
         matchingTechnology = technologies.find(tech => tech.id === order.technologyId)
         matchingInterior = interiors.find(interior => interior.id === order.interiorId)
-        const totalCost = matchingWheel.price + matchingPaint.price + matchingTechnology.price + matchingInterior.price
+        const baseCost = matchingWheel.price + matchingPaint.price + matchingTechnology.price + matchingInterior.price
+        const totalCost = Multiply(order.modelId, baseCost)
 
-        return `<p id="${order.id}">${matchingPaint.type} car with ${matchingWheel.type} wheels, ${matchingInterior.type} interior, and the ${matchingTechnology.type} for a total cost of ${totalCost.toLocaleString("en-US", {
+        const model = models.find(model => model.id === order.modelId).type 
+        return `<p id="${order.id}">${matchingPaint.type} ${model} with ${matchingWheel.type} wheels, ${matchingInterior.type} interior, and the ${matchingTechnology.type} for a total cost of ${totalCost.toLocaleString("en-US", {
             style: "currency",
             currency: "USD"
         })}`

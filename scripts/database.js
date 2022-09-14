@@ -93,6 +93,21 @@ const database = {
         }
     ],
 
+    models: [
+        {
+            id: 1,
+            type: "Car"
+        },
+        {
+            id: 2,
+            type: "SUV"
+        },
+        {
+            id: 3,
+            type: "Truck"
+        }
+    ],
+
     customOrders: [
         {
             id: 1,
@@ -100,6 +115,7 @@ const database = {
             interiorId: 4,
             technologyId: 3,
             wheelsId: 3,
+            modelId: 1,
             timestamp: 1662654641426
         }
     ],
@@ -131,6 +147,11 @@ export const getWheels = () => {
 export const getOrders = () => {
     return database.customOrders.map(order => ({ ...order }))
 }
+
+export const getModels = () => {
+    return database.models.map(model => ({ ...model }))
+}
+
 export const setPaint = (id) => {
     database.newOrder.paintId = id
 }
@@ -147,9 +168,32 @@ export const setWheels = (id) => {
     database.newOrder.wheelsId = id
 }
 
+export const setModel = (id) => {
+    database.newOrder.modelId = id
+}
+
+export const Multiply = (modelId, price) => {
+
+    switch (modelId) {
+        case 1: 
+            price *= 1
+            break
+        case 2:
+            price *= 1.5
+            break
+        case 3:
+            price *= 2.25
+            break
+        default:
+            console.log(`Error with switch statement.`)
+    }
+
+    return price
+}
+
 export const addCustomOrder = () => {
     if (database.newOrder !== undefined) {
-        if (Object.keys(database.newOrder).length === 4) {
+        if (Object.keys(database.newOrder).length === 5) {
             const newOrder = { ...database.newOrder } // 1.
 
             const newId = database.customOrders.length // 2.
